@@ -10,7 +10,9 @@ What about a website that finds the cheapest food prices in the country and recc
  
 What about a map of all the aquariums in the world where you can touch (and therefore punch) a fish. Color coded by fish punching yes/no. 
 
-What about a website that maps earthquakes and then all the images shake harder and harder based on the magnitude of the earthquake you click on. 
+What about a website that maps earthquakes and then all the images shake harder and harder based on the magnitude of the earthquake you click on. 8/9 makes the screen shake so hard you can't read anything at all. 
+
+What about a website where you click on a place on a map and it redirects you to a page that tells you how hot that place is compared to a list of unrelated objects. Example: you click on new york city and it says "New york city is as hot as a Kaola!" and serves up a full screen image of a koala. Or for san fransisco at night it'll be like "San Fransisco is as hot as a twinkie!" and serves up an enormous image of a twinkie. 
 
 
 
