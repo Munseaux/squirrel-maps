@@ -7,4 +7,12 @@ What about a site that identifies stocks poised for breakouts based on bollinger
 
 What about a website that finds the cheapest food prices in the country and reccomends thrifty places to have dinner. I'd want to do it so it suggests across the entire continental US and then sends you a link with directions from your current location. Could probably just do a really basic google maps link generator thing. Would be easy. I'd like to use user input for the location services -- it would be a pain in the ass to try and extract location from the browser. 
  
+ 
+What about a map of all the aquariums in the world where you can touch (and therefore punch) a fish. Color coded by fish punching yes/no. 
+
+What about a website that maps earthquakes and then all the images shake harder and harder based on the magnitude of the earthquake you click on. 
+
+
+
+
 
