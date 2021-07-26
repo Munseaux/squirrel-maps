@@ -1,0 +1,16 @@
+body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  #map,
+  body,
+  html {
+    height: 100%;
+  }
+  
+  #leg-element {
+    color: aliceblue;
+    -webkit-text-stroke: .8px black;
+    font-size: x-large;
+  }
