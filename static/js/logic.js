@@ -88,7 +88,11 @@ d3.json(url).then(data => {
 
 
 
-
+//TODO flask integration to serve up multiple pages. I want to be able 
+// to link to other viz pages besides the default route. 
+// squirrel sightings over time compared to local election results. 
+//overlay increasing manhatten size to determine where squirrels would be if central park
+// was the same size as the entire island. 
 
 
 
