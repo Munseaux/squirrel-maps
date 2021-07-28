@@ -27,7 +27,7 @@ d3.json(url).then(data => {
   
   var myMap = L.map("map", {
     center: [40.7831, -73.9712],
-    zoom: 12,
+    zoom: 14,
     layers: streetmap
   });
 
@@ -62,7 +62,7 @@ d3.json(url).then(data => {
     } 
     
   });
-  console.log(greyArr);
+  
   var squirrels = L.layerGroup(squirrelArr);
   var amSquirrels = L.layerGroup(amArr);
   var pmSquirrels = L.layerGroup(pmArr);

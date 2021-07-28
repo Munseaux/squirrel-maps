@@ -10,7 +10,8 @@ body {
   }
   
   #leg-element {
-    color: aliceblue;
+    color: white;
     -webkit-text-stroke: .8px black;
     font-size: x-large;
   }
+
