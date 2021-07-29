@@ -33,6 +33,8 @@ d3.json(url).then(data => {
 
     var electionArr = [];
 
+    var electionSquirrelData = [];
+
     data.forEach(squirrel => {
         var lon = squirrel.x;
         var lat = squirrel.y;
@@ -41,6 +43,7 @@ d3.json(url).then(data => {
         var marker = L.marker([lat,lon]).bindPopup(date);
         if (day > 15){
             electionArr.push(marker);
+            electionSquirrelData.push(squirrel);
         }
     });
     console.log(electionArr);
@@ -57,17 +60,20 @@ d3.json(url).then(data => {
     legend.onAdd = function() {
 
         var div = L.DomUtil.create("div", "info legend");
-    
-        div.innerHTML = "<h3> hiya </h3>"; //add plotly graphs for election results. 
+        //this sets up a bootstrap dropdown in a legend object of leaflet. This will be used to insert charts into the dropdown so they can be expanded and contracted. insert charts as li tags inside the dropdown menu ul class. 
+        div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"></ul></div>"; 
         return div;
-      };
-  
+    };
 
     legend.addTo(myMap);
+
+    //this is wehre we do the plotly stuff. make sure to use electionSquirrelData array. 
+    //cinnamon squirrels = republicans? grey = dems? black = independent? Does this make it a predictive model for the results. 
+    //squirrel sightings in november vs baseline. 
+    //squirrel location in november vs baseline
 
     
  
 
 });
-//squirrel sightings in november vs baseline. 
-//squirrel location in november vs baseline
+
