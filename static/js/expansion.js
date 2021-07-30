@@ -5,7 +5,7 @@
 //look at categories of places on google and determine what good categories would be. 
 
 var url = "https://data.cityofnewyork.us/resource/vfnx-vebw.json"
-var API_KEY = process.env.API_KEY;
+var MAP_KEY = process.env.API_KEY;
 
 d3.json(url).then(data => {
 
@@ -15,14 +15,14 @@ d3.json(url).then(data => {
         maxZoom: 18,
         zoomOffset: -1,
         id: "mapbox/streets-v11",
-        accessToken: API_KEY
+        accessToken: MAP_KEY
     });
 
     var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "dark-v10",
-        accessToken: API_KEY
+        accessToken: MAP_KEY
     });
 
     // Define a baseMaps object to hold our base layers
