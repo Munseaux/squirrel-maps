@@ -5,6 +5,7 @@
 //look at categories of places on google and determine what good categories would be. 
 
 var url = "https://data.cityofnewyork.us/resource/vfnx-vebw.json"
+var API_KEY = process.env.API_KEY;
 
 d3.json(url).then(data => {
 
