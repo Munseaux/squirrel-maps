@@ -138,6 +138,17 @@ d3.json(url).then(data => {
     collapsed: false
   }).addTo(myMap);
 
+  var legend = L.control({position: "topleft"});
+  legend.onAdd = function() {
+      var div = L.DomUtil.create("div", "info legend");
+      //this sets up a bootstrap dropdown in a legend object of leaflet. This will be used to insert charts into the dropdown so they can be expanded and contracted. insert charts as li tags inside the dropdown menu ul class. 
+      div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"></ul></div>"; 
+      return div;
+  };
+
+  legend.addTo(myMap);
+
+
   squirrels.addTo(myMap);
 
 
