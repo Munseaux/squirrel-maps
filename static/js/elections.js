@@ -74,7 +74,8 @@ d3.json(url).then(data => {
         var lat = squirrel.y;
         var {year, month, day} = squirrel.date.match(/(?<month>\d{2})(?<day>\d{2})(?<year>\d{4})/, 'ig').groups;
         var date = new Date(`${year}.${month}.${day}`);
-        // var marker = L.marker([lat,lon]).bindPopup(date);
+        
+        
         if (day > 15) {
             if (squirrel.primary_fur_color === "Gray") {
                 var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
@@ -121,6 +122,8 @@ d3.json(url).then(data => {
     };
 
     legend.addTo(myMap);
+
+    novSquirrels.addTo(myMap);
 
     //this is wehre we do the plotly stuff. make sure to use electionSquirrelData array. 
     //cinnamon squirrels = republicans? grey = dems? black = independent? Does this make it a predictive model for the results. 

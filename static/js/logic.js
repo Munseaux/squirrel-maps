@@ -138,6 +138,8 @@ d3.json(url).then(data => {
     collapsed: false
   }).addTo(myMap);
 
+  squirrels.addTo(myMap);
+
 
 });
 
