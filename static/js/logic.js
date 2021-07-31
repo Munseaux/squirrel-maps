@@ -42,9 +42,56 @@ d3.json(url).then(data => {
     var lon = squirrel.x;
     var lat = squirrel.y;
     var color = squirrel.primary_fur_color;
+
+    var graySquirrelMarker = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
+    var blackSquirrelMarker = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
+    var redSquirrelMarker = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
+
     if (lon) {
-      var marker = L.marker([lat, lon]).bindPopup("hello");
-      squirrelArr.push(marker);
+      if (squirrel.primary_fur_color === "Gray") {
+        var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup("hello");
+        squirrelArr.push(marker);
+      }
+
+      else if (squirrel.primary_fur_color === "Black") {
+        var marker = L.marker([lat, lon], {icon: blackSquirrelMarker}).bindPopup("hello");
+        squirrelArr.push(marker);
+      }
+
+      else if (squirrel.primary_fur_color === "Cinnamon") {
+        var marker = L.marker([lat, lon], {icon: redSquirrelMarker}).bindPopup("hello");
+        squirrelArr.push(marker);
+      }
+
+      else {
+        var marker = L.marker([lat, lon]).bindPopup("hello");
+        squirrelArr.push(marker);
+      }
+      
     }
     if (squirrel.shift === "AM") {
       
