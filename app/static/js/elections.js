@@ -34,10 +34,13 @@ d3.json(url).then(data => {
     var electionArr = [];
 
     var electionSquirrelData = [];
+    var squirrelSightings = [];
 
     data.forEach(squirrel => {
         var lon = squirrel.x;
         var lat = squirrel.y;
+        var sighting = squirrel.Date;
+        squirrelSightings.push(sighting);
         var {year, month, day} = squirrel.date.match(/(?<month>\d{2})(?<day>\d{2})(?<year>\d{4})/, 'ig').groups;
         var date = new Date(`${year}.${month}.${day}`);
         var marker = L.marker([lat,lon]).bindPopup(date);
@@ -75,6 +78,8 @@ d3.json(url).then(data => {
     //squirrel sightings in november vs baseline. 
     //squirrel location in november vs baseline.
 
+    console.log(squirrelSightings);
+
     var squirrelElectionsData = [
         {
             x: "election",
@@ -87,7 +92,7 @@ d3.json(url).then(data => {
         title: "Squirrel Demographics"
     };    
 
-	Plotly.newPlot("barchart1", squirrelElectionssData, squirrelElectionsLayout);
+	Plotly.newPlot("barchart1", squirrelElectionsData, squirrelElectionsLayout);
     
 
 
