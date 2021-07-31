@@ -1,11 +1,13 @@
 from flask import Flask, render_template, redirect
+import os
 
 app = Flask(__name__)
 
 #primary routes
 @app.route("/")
 def index():
-    return render_template("index.html")
+    api = os.environ['API_KEY']
+    return render_template("index.html", api=api)
 
 @app.route("/elections")
 def elections():
