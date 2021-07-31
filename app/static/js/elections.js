@@ -87,7 +87,7 @@ d3.json(url).then(data => {
         title: "Squirrel Demographics"
     };    
 
-	Plotly.newPlot("barchart1", squirrelDemographicsData, squirrelDemographicsLayout);
+	Plotly.newPlot("barchart1", squirrelElectionssData, squirrelElectionsLayout);
     
 
 
