@@ -39,8 +39,11 @@ d3.json(url).then(data => {
     data.forEach(squirrel => {
         var lon = squirrel.x;
         var lat = squirrel.y;
-        var sighting = squirrel.Date;
-        squirrelSightings.push(sighting);
+        
+        var {year, month, day} = squirrel.date.match(/(?<month>\d{2})(?<day>\d{2})(?<year>\d{4})/, 'ig').groups;
+        var date = new Date(`${year}.${month}.${day}`);
+        squirrelSightings.push({"Date": date, "Color": squirrel.primary_fur_color});
+
         var {year, month, day} = squirrel.date.match(/(?<month>\d{2})(?<day>\d{2})(?<year>\d{4})/, 'ig').groups;
         var date = new Date(`${year}.${month}.${day}`);
         var marker = L.marker([lat,lon]).bindPopup(date);
@@ -80,19 +83,27 @@ d3.json(url).then(data => {
 
     console.log(squirrelSightings);
 
-    var squirrelElectionsData = [
-        {
-            x: ["election"],
-            y: [electionArr.length],
-            type: "bar"
-        }
-    ];
+
+
+    var trace1 = {
+            x: squirrelSightings.Date,
+            y: squirrelSightings.Color,
+            type: "scatter"
+    };
+
+    var trace2 = {
+
+    }
+
+    var trace3 = {
+
+    }
 
     var squirrelElectionsLayout = {
-        title: "Squirrel Demographics"
+        title: "Squirrel Demographic Trends Near Election Day"
     };    
 
-	Plotly.newPlot("barchart1", squirrelElectionsData, squirrelElectionsLayout);
+	Plotly.newPlot("barchart1", [trace1], squirrelElectionsLayout);
     
 
 
