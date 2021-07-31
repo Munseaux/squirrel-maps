@@ -83,11 +83,27 @@ d3.json(url).then(data => {
 
     console.log(squirrelSightings);
 
+    blackArr=[];
+    redArr=[];
+    grayArr=[];
+    squirrelSightings.forEach(squirrel => {
+
+        if(squirrel.Color){
+            if(squirrel.Color === "Black"){
+                blackArr.push(squirrel.Date);
+            } else if(squirrel.Color === "Cinnamon"){
+                redArr.push(squirrel.Date);
+            } else if(squirrel.Color === "Gray"){
+                grayArr.push(squirrel.Date);
+            }
+        }
+
+    });
 
 
     var trace1 = {
-            x: squirrelSightings.Date,
-            y: squirrelSightings.Color,
+            x: ['2018-10-01', '2018-10-30'],
+            y: blackArr,
             type: "scatter"
     };
 
