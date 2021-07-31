@@ -83,6 +83,11 @@ d3.json(url).then(data => {
 
     console.log(squirrelSightings);
 
+    squirrelSightings.sort(function(a,b){
+        return new Date(b.Date) - new Date(a.Date);
+    });
+    console.log(squirrelSightings);
+
     let blackArr=[];
     let redArr=[];
     let grayArr=[];
