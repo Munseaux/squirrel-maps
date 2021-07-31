@@ -52,7 +52,6 @@ d3.json(url).then(data => {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-
     var blackSquirrelMarker = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -61,7 +60,6 @@ d3.json(url).then(data => {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-
     var redSquirrelMarker = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -70,7 +68,6 @@ d3.json(url).then(data => {
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
-
     var unknownSquirrelMarker = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',

@@ -35,15 +35,70 @@ d3.json(url).then(data => {
 
     var electionSquirrelData = [];
 
+    // Creating differently colored markers for each fur color
+    var graySquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    var blackSquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    var redSquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    var unknownSquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
     data.forEach(squirrel => {
         var lon = squirrel.x;
         var lat = squirrel.y;
         var {year, month, day} = squirrel.date.match(/(?<month>\d{2})(?<day>\d{2})(?<year>\d{4})/, 'ig').groups;
         var date = new Date(`${year}.${month}.${day}`);
-        var marker = L.marker([lat,lon]).bindPopup(date);
-        if (day > 15){
-            electionArr.push(marker);
-            electionSquirrelData.push(squirrel);
+        // var marker = L.marker([lat,lon]).bindPopup(date);
+        if (day > 15) {
+            if (squirrel.primary_fur_color === "Gray") {
+                var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+                electionArr.push(marker);
+                electionSquirrelData.push(squirrel);
+            }
+            else if (squirrel.primary_fur_color === "Black") {
+                var marker = L.marker([lat, lon], {icon: blackSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+                electionArr.push(marker);
+                electionSquirrelData.push(squirrel);
+            }
+            else if (squirrel.primary_fur_color === "Cinnamon") {
+                var marker = L.marker([lat, lon], {icon: redSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+                electionArr.push(marker);
+                electionSquirrelData.push(squirrel);
+            }
+            else {
+                var marker = L.marker([lat, lon], {icon: unknownSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+                electionArr.push(marker);
+                electionSquirrelData.push(squirrel);
+            }
+
+            // electionArr.push(marker);
+            // electionSquirrelData.push(squirrel);
         }
     });
     console.log(electionArr);
