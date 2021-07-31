@@ -83,22 +83,46 @@ d3.json(url).then(data => {
 
     console.log(squirrelSightings);
 
-    blackArr=[];
-    redArr=[];
-    grayArr=[];
-    squirrelSightings.forEach(squirrel => {
+    let blackArr=[];
+    let redArr=[];
+    let grayArr=[];
+    
+    let blackCount = 0;
+    let redCount = 0;
+    let grayCount =0;
+    let currentDay = squirrelSightings[0].Date;
+    let currentColor = "";
+    for (let i=0; i<squirrelSightings.length; i++){
+        console.log(squirrelSightings[i]);
+        if(squirrelSightings[i].Date === currentDay){
+            
+            if(squirrelSightings[i].Color === "Black"){
+                blackCount++;
 
-        if(squirrel.Color){
-            if(squirrel.Color === "Black"){
-                blackArr.push(squirrel.Date);
-            } else if(squirrel.Color === "Cinnamon"){
-                redArr.push(squirrel.Date);
-            } else if(squirrel.Color === "Gray"){
-                grayArr.push(squirrel.Date);
+            }else if(squirrelSightings[i].Color === "Gray"){
+                grayCount++;
+
+            }else if(squirrelSightings[i].Color === "Cinnamon"){
+                redCount++;
+            } else {
+                null; //handles where color is undefined. 
             }
+            
+        
+        } else{
+            blackArr.push(blackCount);
+            grayArr.push(grayCount);
+            redArr.push(redCount);
+            blackCount = 0;
+            grayCount = 0;
+            redCount = 0;
         }
+        currentColor = squirrelSightings[i].Color;
+    }
 
-    });
+    console.log(redArr);
+    console.log(blackArr);
+    console.log(grayArr);
 
 
     var trace1 = {
