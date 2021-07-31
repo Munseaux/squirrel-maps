@@ -145,7 +145,7 @@ d3.json(url).then(data => {
   legend.onAdd = function() {
       var div = L.DomUtil.create("div", "info legend");
       //this sets up a bootstrap dropdown in a legend object of leaflet. This will be used to insert charts into the dropdown so they can be expanded and contracted. insert charts as li tags inside the dropdown menu ul class. 
-      div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"><li><div id = \"barchart1\"></div></li><li><div id = \"barchart2\"></div></li></ul></div>"; 
+      div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"><li><div id = \"barchart1\"></div></li><li><div id = \"piechart\"></div></li><li><div id = \"barchart2\"></div></li></ul></div>"; 
       return div;
   };
 
@@ -157,7 +157,7 @@ d3.json(url).then(data => {
   console.log(cinnamonArr.length)
   console.log(greyArr.length + blackArr.length)
 
-  // Squirrel Demographic plot
+  // Squirrel Demographic plot --------------------------------------------------------------------------------------------------
 
   var squirrelDemographicsData = [
     {
@@ -166,7 +166,7 @@ d3.json(url).then(data => {
       text: "Squirrel Number",
       type:"bar",
       marker: {
-        color: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', 'rgb(153, 76, 0)'],
+        color: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', '#D2691E'],
         opacity: 0.8,
         line: {
           color: ['rgb(96, 96, 96)', 'rgb(0, 0, 0)', 'rgb(102, 51, 0)'],
@@ -190,7 +190,33 @@ d3.json(url).then(data => {
     }
   };
 
-  // AM vs PM squirrel Sightings
+  // Squirrel Demographic Pie Chart --------------------------------------------------------------------------------------------------
+
+  var squirrelPieData = [
+    {
+      labels: ["Grey", "Black", "Cinnamon"],
+      values: [greyArr.length, blackArr.length, cinnamonArr.length],
+      text: "Squirrel Number",
+      type:"pie",
+      opacity: 0.8,
+      marker: {
+        colors: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', '#D2691E'],
+        line: {
+          color: ['rgb(96, 96, 96)', 'rgb(0, 0, 0)', 'rgb(102, 51, 0)'],
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var squirrelPieLayout = {
+    title: "Squirrel Percentage by Fur Color",
+    height: 500,
+    width: 700
+  };
+
+
+  // AM vs PM squirrel Sightings --------------------------------------------------------------------------------------------------
   var AMPMsquirrelData = [
     {
       x: ["AM", "PM"],
@@ -223,6 +249,7 @@ d3.json(url).then(data => {
   };
 
   Plotly.newPlot("barchart1", squirrelDemographicsData, squirrelDemographicsLayout);
+  Plotly.newPlot("piechart", squirrelPieData, squirrelPieLayout);
   Plotly.newPlot("barchart2", AMPMsquirrelData, AMPMsquirrelLayout);
 
   // Adds all squirrel markers as the default marker layer on map
