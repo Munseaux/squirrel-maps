@@ -28,7 +28,8 @@ d3.json(url).then(data => {
   var myMap = L.map("map", {
     center: [40.7831, -73.9712],
     zoom: 14,
-    layers: streetmap
+    layers: streetmap,
+    scrollWheelZoom: false
   });
 
 
@@ -138,17 +139,93 @@ d3.json(url).then(data => {
     collapsed: false
   }).addTo(myMap);
 
+
+  // Adding legend to Squirrels are Legion tab
   var legend = L.control({position: "topleft"});
   legend.onAdd = function() {
       var div = L.DomUtil.create("div", "info legend");
       //this sets up a bootstrap dropdown in a legend object of leaflet. This will be used to insert charts into the dropdown so they can be expanded and contracted. insert charts as li tags inside the dropdown menu ul class. 
-      div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"></ul></div>"; 
+      div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"><li><div id = \"barchart1\"></div></li><li><div id = \"barchart2\"></div></li></ul></div>"; 
       return div;
   };
 
+
   legend.addTo(myMap);
 
+  console.log(greyArr.length);
+  console.log(blackArr.length)
+  console.log(cinnamonArr.length)
+  console.log(greyArr.length + blackArr.length)
 
+  // Squirrel Demographic plot
+
+  var squirrelDemographicsData = [
+    {
+      x: ["Grey", "Black", "Cinnamon"],
+      y: [greyArr.length, blackArr.length, cinnamonArr.length],
+      text: "Squirrel Number",
+      type:"bar",
+      marker: {
+        color: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', 'rgb(153, 76, 0)'],
+        opacity: 0.8,
+        line: {
+          color: ['rgb(96, 96, 96)', 'rgb(0, 0, 0)', 'rgb(102, 51, 0)'],
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var squirrelDemographicsLayout = {
+    title: "Squirrel Demographics",
+    yaxis: {
+      title: {
+        text: "Squirrel Number"
+      }
+    },
+    xaxis: {
+      title: {
+        text: "Fur Color"
+      }
+    }
+  };
+
+  // AM vs PM squirrel Sightings
+  var AMPMsquirrelData = [
+    {
+      x: ["AM", "PM"],
+      y: [amArr.length, pmArr.length],
+      text: "Squirrel Number",
+      type:"bar",
+      marker: {
+        color: ['rgb(255, 255, 102)', 'rgb(102, 0, 204)'],
+        opacity: 0.8,
+        line: {
+          color: ['rgb(255, 178, 102)', 'rgb(51, 0, 102)'],
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var AMPMsquirrelLayout = {
+    title: "Squirrel by AM/PM",
+    yaxis: {
+      title: {
+        text: "Squirrel Number"
+      }
+    },
+    xaxis: {
+      title: {
+        text: "Ante- or Post-Meridiem"
+      }
+    }
+  };
+
+  Plotly.newPlot("barchart1", squirrelDemographicsData, squirrelDemographicsLayout);
+  Plotly.newPlot("barchart2", AMPMsquirrelData, AMPMsquirrelLayout);
+
+  // Adds all squirrel markers as the default marker layer on map
   squirrels.addTo(myMap);
 
 

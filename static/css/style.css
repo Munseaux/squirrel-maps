@@ -15,3 +15,8 @@ body {
     font-size: x-large;
   }
 
+.dropdown-menu {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
