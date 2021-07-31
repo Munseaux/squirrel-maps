@@ -11,11 +11,13 @@ def index():
 
 @app.route("/elections")
 def elections():
-    return render_template("elections.html")
+    api = os.environ['API_KEY']
+    return render_template("elections.html", api=api)
 
 @app.route("/expansion")
 def expansion():
-    return render_template("expansion.html")
+    api = os.environ['API_KEY']
+    return render_template("expansion.html", api=api)
 
 
 #redirects and workarounds
