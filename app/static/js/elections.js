@@ -82,8 +82,8 @@ d3.json(url).then(data => {
 
     var squirrelElectionsData = [
         {
-            x: "election",
-            y: electionArr.length,
+            x: ["election"],
+            y: [electionArr.length],
             type: "bar"
         }
     ];
