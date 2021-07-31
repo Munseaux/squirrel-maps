@@ -40,9 +40,11 @@ def expansion_redirect():
     return redirect("/expansion", code=302)
 @app.route("/expansion.html")
 def expansion_redirect_2():
-    return redirect("/expansion", code=302)
+    return redirect("/expansion", code=302)  
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
+
 
     

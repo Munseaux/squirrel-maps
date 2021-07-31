@@ -46,7 +46,7 @@ d3.json(url).then(data => {
             electionSquirrelData.push(squirrel);
         }
     });
-    console.log(electionArr);
+   
     var novSquirrels = L.layerGroup(electionArr);
     var overlayMaps = {
         "Election Squirrels": novSquirrels
@@ -60,20 +60,38 @@ d3.json(url).then(data => {
     legend.onAdd = function() {
 
         var div = L.DomUtil.create("div", "info legend");
-        //this sets up a bootstrap dropdown in a legend object of leaflet. This will be used to insert charts into the dropdown so they can be expanded and contracted. insert charts as li tags inside the dropdown menu ul class. 
-        div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"></ul></div>"; 
+        //this sets up a bootstrap dropdown in a legend object of leaflet. This will be used to insert charts into the dropdown so they can be expanded and contracted. insert charts as li tags inside the dropdown-menu ul class. 
+        div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" id=\"charts\" aria-labelledby=\"dropdownMenuButton1\"></ul></div>"; 
+
         return div;
     };
 
     legend.addTo(myMap);
 
+    let numberOfGraphs = 1;
+
     //this is wehre we do the plotly stuff. make sure to use electionSquirrelData array. 
     //cinnamon squirrels = republicans? grey = dems? black = independent? Does this make it a predictive model for the results. 
     //squirrel sightings in november vs baseline. 
-    //squirrel location in november vs baseline
-
+    //squirrel location in november vs baseline.
     
- 
+    var squirrelDemographicsData = [
+        {
+            x: "election",
+            y: electionArr.length,
+            type: "bar"
+        }
+    ];
+
+    var squirrelDemographicsLayout = {
+        title: "Squirrel Demographics"
+    }
+
+    console.log(squirrelDemographicsData);
+    console.log(squirrelDemographicsLayout);
+
+	Plotly.newPlot("bar", squirrelDemographicsData, squirrelDemographicsLayout);
+
 
 });
 
