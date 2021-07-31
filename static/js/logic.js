@@ -100,7 +100,7 @@ d3.json(url).then(data => {
       }
 
       else {
-        var marker = L.marker([lat, lon], {icon: unknownSquirrelMarker}).bindPopup("They didn't record what color MY fur was");
+        var marker = L.marker([lat, lon], {icon: unknownSquirrelMarker}).bindPopup("They didn't record what color MY fur is");
         squirrelArr.push(marker);
       }
       
