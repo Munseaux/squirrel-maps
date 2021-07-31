@@ -1,26 +1,12 @@
 
 beautifulsoup4==4.9.3
-requests==1
 bs4==0.0.1
-
 Flask==2.0.1
 geojson==2.5.0
 gmaps==0.9.0
-
-
 Jinja2==3.0.1
 json5==0.9.5
-
 lxml==4.6.3
-
-
-
 plotly==4.14.3
-
-requests @ file:///tmp/build/80754af9/requests_1608241421344/work
-
 selenium==3.141.0
-
 splinter==0.14.0
-
-urllib3 @ file:///tmp/build/80754af9/urllib3_1615837158687/work
