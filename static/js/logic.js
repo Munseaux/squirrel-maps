@@ -43,6 +43,7 @@ d3.json(url).then(data => {
     var lat = squirrel.y;
     var color = squirrel.primary_fur_color;
 
+    // Creating differently colored markers for each fur color
     var graySquirrelMarker = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
