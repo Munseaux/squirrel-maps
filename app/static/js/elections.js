@@ -93,7 +93,8 @@ d3.json(url).then(data => {
     let currentDay = squirrelSightings[0].Date;
     let currentColor = "";
     for (let i=0; i<squirrelSightings.length; i++){
-        console.log(blackCount);
+        console.log(currentDay);
+        console.log(squirrelSightings[i].Date);
         if(squirrelSightings[i].Date === currentDay){
             
             if(squirrelSightings[i].Color === "Black"){
