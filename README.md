@@ -9,7 +9,7 @@ In 2018 a group of citizen scientists took a census of squirrels in New York Cit
 [You can view their findings here.](https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw)
 
 
-
+![img](app/static/images/squirrel-website-example.png)
 
 
 
