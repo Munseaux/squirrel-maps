@@ -146,16 +146,15 @@ d3.json(url).then(data => {
     let redCount = 0;
     let grayCount =0;
     let currentDay = squirrelSightings[0].Date.getDay();
-    console.log(currentDay);
+    
     let currentColor = "";
     let days =[];
     for (let i=0; i<squirrelSightings.length; i++){
-        console.log(squirrelSightings[i].Date.getDay());
-        console.log(currentDay);
+        
         if(squirrelSightings[i].Date.getDay() === currentDay){
 
             //make list of all days
-            if (!days.includes(squirrelSightings[i].Date)){
+            if (!(days.includes(squirrelSightings[i].Date))){
                 days.push(squirrelSightings[i].Date);
             }
             
