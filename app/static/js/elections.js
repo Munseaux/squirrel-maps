@@ -150,13 +150,13 @@ d3.json(url).then(data => {
     let currentColor = "";
     let days =[];
     for (let i=0; i<squirrelSightings.length; i++){
+
+        //make list of all unique days
+        if (!(days.includes(squirrelSightings[i].Date))){
+            days.push(squirrelSightings[i].Date);
+        }
         
         if(squirrelSightings[i].Date.getDay() === currentDay){
-
-            //make list of all days
-            if (!(days.includes(squirrelSightings[i].Date))){
-                days.push(squirrelSightings[i].Date);
-            }
             
             if(squirrelSightings[i].Color === "Black"){
                 blackCount++;
