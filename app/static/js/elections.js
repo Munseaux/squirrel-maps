@@ -188,13 +188,7 @@ d3.json(url).then(data => {
     }
     days = unique(days);
 
-    console.log(redArr);
-    console.log(blackArr);
-    console.log(grayArr);
-    
-
-    // set range for time series data. 
-    console.log(days);
+    // make line traces
     var trace1 = {
         x: days,
         y: grayArr,
@@ -202,7 +196,7 @@ d3.json(url).then(data => {
         name: "Gray Squirrels",
         mode: "lines",
         line: {
-            color: ['rgb(160, 160, 160)']
+            color: 'rgb(160, 160, 160)'
         }
     };
 
@@ -213,7 +207,7 @@ d3.json(url).then(data => {
         name: "Black Squirrels",
         mode: 'lines',
         line: {
-            color: ['rgb(32, 32, 32)']
+            color: 'rgb(32, 32, 32)'
         }   
     };
 
@@ -224,7 +218,7 @@ d3.json(url).then(data => {
         name: "Cinnamon Squirrels",
         mode: 'lines',
         line: {
-            color: ['rgb(102, 51, 0)']
+            color: 'rgb(102, 51, 0)'
         }
     };
 
