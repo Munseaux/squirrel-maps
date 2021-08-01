@@ -114,7 +114,7 @@ d3.json(url).then(data => {
       shadowSize: [41, 41]
     });
 
-    //setup markers with appropriate squirrel color and popup text. 
+    //setup markers with appropriate squirrel color and popup
     if (lon) {
       if (squirrel.primary_fur_color === "Gray") {
         var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup("I'm a Gray Squirrel!");
@@ -143,10 +143,9 @@ d3.json(url).then(data => {
     } else if (squirrel.shift === "PM") {
       pmArr.push(marker);
     }
-
     //undefined, grey, cinnamon, black
     if (color === "Gray"){
-      grayArr.push(marker);
+      greyArr.push(marker);
     } else if (color === "Cinnamon"){
       cinnamonArr.push(marker);
     } else if (color === "Black"){
@@ -187,12 +186,17 @@ d3.json(url).then(data => {
 
   legend.addTo(myMap);
 
+  console.log(greyArr.length);
+  console.log(blackArr.length)
+  console.log(cinnamonArr.length)
+  console.log(greyArr.length + blackArr.length)
+
   // Squirrel Demographic plot --------------------------------------------------------------------------------------------------
 
   var squirrelDemographicsData = [
     {
       x: ["Grey", "Black", "Cinnamon"],
-      y: [grayArr.length, blackArr.length, cinnamonArr.length],
+      y: [greyArr.length, blackArr.length, cinnamonArr.length],
       text: "Squirrel Number",
       type:"bar",
       marker: {
@@ -225,7 +229,7 @@ d3.json(url).then(data => {
   var squirrelPieData = [
     {
       labels: ["Grey", "Black", "Cinnamon"],
-      values: [grayArr.length, blackArr.length, cinnamonArr.length],
+      values: [greyArr.length, blackArr.length, cinnamonArr.length],
       text: "Squirrel Number",
       type:"pie",
       opacity: 0.8,
@@ -244,6 +248,40 @@ d3.json(url).then(data => {
     height: 500,
     width: 700
   };
+
+
+  // AM vs PM squirrel Sightings --------------------------------------------------------------------------------------------------
+  var AMPMsquirrelData = [
+    {
+      x: ["AM", "PM"],
+      y: [amArr.length, pmArr.length],
+      text: "Squirrel Number",
+      type:"bar",
+      marker: {
+        color: ['rgb(255, 255, 102)', 'rgb(102, 0, 204)'],
+        opacity: 0.8,
+        line: {
+          color: ['rgb(255, 178, 102)', 'rgb(51, 0, 102)'],
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var AMPMsquirrelLayout = {
+    title: "Squirrel by AM/PM",
+    yaxis: {
+      title: {
+        text: "Squirrel Number"
+      }
+    },
+    xaxis: {
+      title: {
+        text: "Ante- or Post-Meridiem"
+      }
+    }
+  };
+
 
   // Creating Data layout for Squirrel sightings by day of the week
 
