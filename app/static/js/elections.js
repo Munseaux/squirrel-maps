@@ -148,10 +148,15 @@ d3.json(url).then(data => {
     let currentDay = squirrelSightings[0].Date.getDay();
     console.log(currentDay);
     let currentColor = "";
+    let days =[];
     for (let i=0; i<squirrelSightings.length; i++){
         console.log(squirrelSightings[i].Date.getDay());
         console.log(currentDay);
         if(squirrelSightings[i].Date.getDay() === currentDay){
+
+            days.push(squirrelSightings[i].Date);
+            //make list of all days
+
             
             if(squirrelSightings[i].Color === "Black"){
                 blackCount++;
@@ -182,26 +187,31 @@ d3.json(url).then(data => {
     console.log(blackArr);
     console.log(grayArr);
 
+    // set range for time series data. 
 
     var trace1 = {
-            x: ['2018-10-01', '2018-10-30'],
+            x: days,
             y: grayArr,
             type: "scatter"
     };
 
     var trace2 = {
-
+        x: days,
+        y: blackArr,
+        type: "scatter"
     }
 
     var trace3 = {
-
+        x: days,
+        y: redArr,
+        type: "scatter"
     }
 
     var squirrelElectionsLayout = {
         title: "Squirrel Demographic Trends Near Election Day"
     };    
 
-	Plotly.newPlot("barchart1", [trace1], squirrelElectionsLayout);
+	Plotly.newPlot("barchart1", [trace1, trace2, trace3], squirrelElectionsLayout);
     
 
 
