@@ -101,6 +101,7 @@ d3.json(url).then(data => {
         console.log(currentDay);
         console.log(squirrelSightings[i].Date);
         if(squirrelSightings[i].Date === currentDay){
+            console.log(squirrelSightings[i].Color);
             
             if(squirrelSightings[i].Color === "Black"){
                 blackCount++;
