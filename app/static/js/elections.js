@@ -36,6 +36,39 @@ d3.json(url).then(data => {
     var electionSquirrelData = [];
     var squirrelSightings = [];
 
+    var graySquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    var blackSquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    var redSquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    var unknownSquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
     data.forEach(squirrel => {
         var lon = squirrel.x;
         var lat = squirrel.y;
@@ -113,12 +146,11 @@ d3.json(url).then(data => {
     let blackCount = 0;
     let redCount = 0;
     let grayCount =0;
-    let currentDay = squirrelSightings[0].Date;
+    let currentDay = squirrelSightings[0].Date.getDay();
     let currentColor = "";
     for (let i=0; i<squirrelSightings.length; i++){
-        console.log(currentDay);
-        console.log(squirrelSightings[i].Date);
-        if(squirrelSightings[i].Date === currentDay){
+        
+        if(squirrelSightings[i].Date.getDay() === currentDay){
             console.log(squirrelSightings[i].Color);
             
             if(squirrelSightings[i].Color === "Black"){
