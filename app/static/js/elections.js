@@ -152,7 +152,7 @@ d3.json(url).then(data => {
     for (let i=0; i<squirrelSightings.length; i++){
 
         //make list of all unique days
-        if (days.includes(squirrelSightings[i].Date.getDay())){
+        if (!days.includes(squirrelSightings[i].Date.getDay())){
             console.log(days.includes(squirrelSightings[i].Date.getDay()));
             days.push(squirrelSightings[i].Date.getDay());
         }
