@@ -175,7 +175,7 @@ d3.json(url).then(data => {
             redCount = 0;
         }
         currentColor = squirrelSightings[i].Color;
-        currentDay = squirrelSightings[i].Date;
+        currentDay = squirrelSightings[i].Date.getDay();
     }
 
     console.log(redArr);
