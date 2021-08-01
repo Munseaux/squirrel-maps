@@ -131,12 +131,9 @@ d3.json(url).then(data => {
     //adds default selected option
     expandSquirrels.addTo(myMap);
 
-    //here we can use the google maps API and take the marker's lat and lon to find what kinds of places these squirrels are visiting. 
 
-    //this is where the plotly logic should go. make bar graph of where the extrapolated squirrels are (resturant, park, museum, drowning, etc.)
+    //this is where the plotly logic should go. make bar graph of where the extrapolated squirrels are (resturant, park, museum, drowning, etc.
 
-    
- 
 
 });
 

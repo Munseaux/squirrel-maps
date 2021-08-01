@@ -138,8 +138,6 @@ d3.json(url).then(data => {
 
     legend.addTo(myMap);
 
-    let numberOfGraphs = 1;
-
     //  #####  PLOTLY BELOW  ######
 
     var squirrelPieData = [
@@ -165,19 +163,6 @@ d3.json(url).then(data => {
         width: 700
       };
     
-      var squirrelDemographicsLayout = {
-        title: "Squirrel Demographics",
-        yaxis: {
-          title: {
-            text: "Squirrel Number"
-          }
-        },
-        xaxis: {
-          title: {
-            text: "Fur Color"
-          }
-        }
-      };
 
     //sort to get into date order. 
     squirrelSightings.sort(function(a,b){
@@ -281,12 +266,7 @@ d3.json(url).then(data => {
     d3.select("#chart3").append("img").attr("src", "/static/images/PartyAffNY.png").attr("id", "party-breakdown");
 
     //adds default view
-    electionArr.addTo(myMap);
-
-    
-
-    
-
+    novSquirrels.addTo(myMap);
 
 });
 
