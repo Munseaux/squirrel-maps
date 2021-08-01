@@ -1,6 +1,6 @@
 ## Interactive Central Park Squirrel Map
 
-This project takes squirrel sighting data from central park and provides insights and graphs on an interactive map. 
+This project takes squirrel sighting data from central park and displays insights on an interactive map.  
 
 [You can find it hosted here!](http://squirrel-map.herokuapp.com/)
 
