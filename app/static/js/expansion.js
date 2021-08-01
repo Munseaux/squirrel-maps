@@ -84,9 +84,10 @@ d3.json(url).then(data => {
         var lat = Number(squirrel.y);
         var {year, month, day} = squirrel.date.match(/(?<month>\d{2})(?<day>\d{2})(?<year>\d{4})/, 'ig').groups;
         var date = new Date(`${year}.${month}.${day}`);
-        
-        let centerLat = 40.785091;
-        let centerLon = -73.968285;
+
+        //this is the center of central park
+        let centerLat = 40.783510820905356;
+        let centerLon = -73.9650975936938;
     
         // take the difference between the lat and the lat of the center of central park. multiply by 1.5(arbitrary to make scale work) and then add to the lat. 
         // this gives the same pattern, but larger. 
