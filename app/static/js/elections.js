@@ -275,7 +275,7 @@ d3.json(url).then(data => {
 
 	Plotly.newPlot("barchart1", [trace1, trace2, trace3], squirrelElectionsLayout);
     Plotly.newPlot("barchart2", squirrelPieData, squirrelPieLayout);
-    d3.select("#barchart3").append("img").attr("src", "/static/images/PartyAffNY.png");
+    d3.select("#barchart3").append("img").attr("src", "/static/images/PartyAffNY.png").attr("id", "party-breakdown");
 
     //throw img tag into barchart3 ID
     
