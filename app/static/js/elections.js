@@ -200,9 +200,12 @@ d3.json(url).then(data => {
             y: grayArr,
             type: "scatter",
             name: "Gray Squirrels",
-            line: {
-                color: ['rgb(160, 160, 160)']
+            marker: {
+                color: ['rgb(160, 160, 160)'],
+                line: {
+                    color: ['rgb(160, 160, 160)']
             }
+        }
     };
 
     var trace2 = {
@@ -210,20 +213,26 @@ d3.json(url).then(data => {
         y: blackArr,
         type: "scatter",
         name: "Black Squirrels",
-        line: {
-            color: ['rgb(32, 32, 32)']
+        marker: {
+            color:['rgb(32, 32, 32)'],
+            line: {
+                color: ['rgb(32, 32, 32)']
+            }
         }
-    }
+    };
 
     var trace3 = {
         x: days,
         y: redArr,
         type: "scatter",
         name: "Cinnamon Squirrels",
-        line: {
-            color: ['rgb(102, 51, 0)']
+        marker: {
+            color: ['rgb(102, 51, 0)'],
+            line: {
+                color: ['rgb(102, 51, 0)']
+            }
         }
-    }
+    };
 
     var squirrelElectionsLayout = {
         title: "Squirrel Demographic Trends Near Election Day"
