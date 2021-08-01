@@ -198,19 +198,31 @@ d3.json(url).then(data => {
     var trace1 = {
             x: days,
             y: grayArr,
-            type: "scatter"
+            type: "scatter",
+            name: "Gray Squirrels",
+            line: {
+                color: ['rgb(160, 160, 160)']
+            }
     };
 
     var trace2 = {
         x: days,
         y: blackArr,
-        type: "scatter"
+        type: "scatter",
+        name: "Black Squirrels",
+        line: {
+            color: ['rgb(32, 32, 32)']
+        }
     }
 
     var trace3 = {
         x: days,
         y: redArr,
-        type: "scatter"
+        type: "scatter",
+        name: "Cinnamon Squirrels",
+        line: {
+            color: ['rgb(102, 51, 0)']
+        }
     }
 
     var squirrelElectionsLayout = {
