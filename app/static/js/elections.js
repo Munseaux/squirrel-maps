@@ -153,12 +153,11 @@ d3.json(url).then(data => {
         console.log(squirrelSightings[i].Date.getDay());
         console.log(currentDay);
         if(squirrelSightings[i].Date.getDay() === currentDay){
+
+            //make list of all days
             if (!days.includes(squirrelSightings[i].Date)){
                 days.push(squirrelSightings[i].Date);
             }
-            
-            //make list of all days
-
             
             if(squirrelSightings[i].Color === "Black"){
                 blackCount++;
@@ -191,7 +190,7 @@ d3.json(url).then(data => {
     
 
     // set range for time series data. 
-
+    console.log(days);
     var trace1 = {
             x: days,
             y: grayArr,
