@@ -174,6 +174,119 @@ d3.json(url).then(data => {
     collapsed: false
   }).addTo(myMap);
 
+
+  // Adding legend to Squirrels are Legion tab
+  var legend = L.control({position: "topleft"});
+  legend.onAdd = function() {
+      var div = L.DomUtil.create("div", "info legend");
+      //this sets up a bootstrap dropdown in a legend object of leaflet. This will be used to insert charts into the dropdown so they can be expanded and contracted. insert charts as li tags inside the dropdown menu ul class. 
+      div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"><li><div id = \"barchart1\"></div></li><li><div id = \"piechart\"></div></li><li><div id = \"barchart2\"></div></li><li><div id = \"barchart3\"></div></li></ul></div>"; 
+      return div;
+  };
+
+
+  legend.addTo(myMap);
+
+  // Squirrel Demographic plot --------------------------------------------------------------------------------------------------
+
+  var squirrelDemographicsData = [
+    {
+      x: ["Grey", "Black", "Cinnamon"],
+      y: [grayArr.length, blackArr.length, cinnamonArr.length],
+      text: "Squirrel Number",
+      type:"bar",
+      marker: {
+        color: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', '#D2691E'],
+        opacity: 0.8,
+        line: {
+          color: ['rgb(96, 96, 96)', 'rgb(0, 0, 0)', 'rgb(102, 51, 0)'],
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var squirrelDemographicsLayout = {
+    title: "Squirrel Demographics",
+    yaxis: {
+      title: {
+        text: "Squirrel Number"
+      }
+    },
+    xaxis: {
+      title: {
+        text: "Fur Color"
+      }
+    }
+  };
+
+  // Squirrel Demographic Pie Chart --------------------------------------------------------------------------------------------------
+
+  var squirrelPieData = [
+    {
+      labels: ["Grey", "Black", "Cinnamon"],
+      values: [grayArr.length, blackArr.length, cinnamonArr.length],
+      text: "Squirrel Number",
+      type:"pie",
+      opacity: 0.8,
+      marker: {
+        colors: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', '#D2691E'],
+        line: {
+          color: ['rgb(96, 96, 96)', 'rgb(0, 0, 0)', 'rgb(102, 51, 0)'],
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var squirrelPieLayout = {
+    title: "Squirrel Percentage by Fur Color",
+    height: 500,
+    width: 700
+  };
+
+  // Creating Data layout for Squirrel sightings by day of the week
+
+  var squirrelDayOfWeekData = [
+    {
+      x: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      y: [sunSquirrel, monSquirrel, tueSquirrel, wedSquirrel, thuSquirrel, friSquirrel, satSquirrel],
+      text: "Squirrel Number",
+      type:"bar",
+      marker: {
+        color: 'rgb(160, 160, 160)',
+        opacity: 0.8,
+        line: {
+          color: 'rgb(96, 96, 96)',
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var squirrelDayOfWeekLayout = {
+    title: "Squirrel Sightings by Day of the Week",
+    yaxis: {
+      title: {
+        text: "Squirrel Number"
+      }
+    },
+    xaxis: {
+      title: {
+        text: "Day of the Week"
+      }
+    }
+  };
+
+  Math
+
+  // Generating all of the plots
+
+  Plotly.newPlot("barchart1", squirrelDemographicsData, squirrelDemographicsLayout);
+  Plotly.newPlot("piechart", squirrelPieData, squirrelPieLayout);
+  Plotly.newPlot("barchart2", AMPMsquirrelData, AMPMsquirrelLayout);
+  Plotly.newPlot("barchart3", squirrelDayOfWeekData, squirrelDayOfWeekLayout);
+
   // Adds all squirrel markers as the default marker layer on map
   squirrels.addTo(myMap);
 
