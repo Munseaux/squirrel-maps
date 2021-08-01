@@ -41,7 +41,7 @@ d3.json(url).then(data => {
   var cinnamonArr = [];
   var blackArr = [];
 
-  // Creating arrays for days of the week
+  // Creating variables for days of the week
   var sunSquirrel = 0;
   var monSquirrel = 0;
   var tueSquirrel = 0;
@@ -78,9 +78,6 @@ d3.json(url).then(data => {
     else if(date.getDay() === 6) {
       satSquirrel++;
     }
-    console.log(date);
-
-    
     
 
     // Creating differently colored markers for each fur color
@@ -117,9 +114,7 @@ d3.json(url).then(data => {
       shadowSize: [41, 41]
     });
 
-    
-
-
+    //setup markers with appropriate squirrel color and popup text. 
     if (lon) {
       if (squirrel.primary_fur_color === "Gray") {
         var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup("I'm a Gray Squirrel!");
@@ -148,6 +143,7 @@ d3.json(url).then(data => {
     } else if (squirrel.shift === "PM") {
       pmArr.push(marker);
     }
+
     //undefined, grey, cinnamon, black
     if (color === "Gray"){
       greyArr.push(marker);
@@ -190,11 +186,6 @@ d3.json(url).then(data => {
 
 
   legend.addTo(myMap);
-
-  console.log(greyArr.length);
-  console.log(blackArr.length)
-  console.log(cinnamonArr.length)
-  console.log(greyArr.length + blackArr.length)
 
   // Squirrel Demographic plot --------------------------------------------------------------------------------------------------
 

@@ -91,25 +91,25 @@ d3.json(url).then(data => {
         //set marker colors for squirrels. 
         if (day > 15){
             if (squirrel.primary_fur_color === "Gray") {
-                var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+                var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup("I am a Gray Squirrel!");
                 electionArr.push(marker);
                 electionSquirrelData.push(squirrel);
                 graySquirrels.push(squirrel);
             }
             else if (squirrel.primary_fur_color === "Black") {
-                var marker = L.marker([lat, lon], {icon: blackSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+                var marker = L.marker([lat, lon], {icon: blackSquirrelMarker}).bindPopup("My fru is black!");
                 electionArr.push(marker);
                 electionSquirrelData.push(squirrel);
                 blackSquirrels.push(squirrel);
             }
             else if (squirrel.primary_fur_color === "Cinnamon") {
-                var marker = L.marker([lat, lon], {icon: redSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+                var marker = L.marker([lat, lon], {icon: redSquirrelMarker}).bindPopup("My fur is red, but some may call it 'cinnamon'");
                 electionArr.push(marker);
                 electionSquirrelData.push(squirrel);
                 cinnamonSquirrels.push(squirrel);
             }
             else {
-                var marker = L.marker([lat, lon], {icon: unknownSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+                var marker = L.marker([lat, lon], {icon: unknownSquirrelMarker}).bindPopup("They didn't record what color MY fur is");
                 electionArr.push(marker);
                 electionSquirrelData.push(squirrel);
             }
@@ -276,9 +276,15 @@ d3.json(url).then(data => {
 
 	Plotly.newPlot("chart1", [trace1, trace2, trace3], squirrelElectionsLayout);
     Plotly.newPlot("chart2", squirrelPieData, squirrelPieLayout);
+
+    //serves up graph from pew research 
     d3.select("#chart3").append("img").attr("src", "/static/images/PartyAffNY.png").attr("id", "party-breakdown");
 
-    //throw img tag into barchart3 ID
+    //adds default view
+    electionArr.addTo(myMap);
+
+    
+
     
 
 

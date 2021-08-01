@@ -94,16 +94,16 @@ d3.json(url).then(data => {
         newLon = lon + ((lon-centerLon) * 1.5); 
 
         if (squirrel.primary_fur_color === "Gray") {
-            var marker = L.marker([newLat, newLon], {icon: graySquirrelMarker}).bindPopup(`<h3>${date}</h3>`);
+            var marker = L.marker([newLat, newLon], {icon: graySquirrelMarker}).bindPopup("I'm a Gray Squirrel!");
             expandArr.push(marker);
         } else if (squirrel.primary_fur_color === "Black") {
-            var marker = L.marker([newLat, newLon], {icon: blackSquirrelMarker}).bindPopup(`<h3>${date}</h3>`);
+            var marker = L.marker([newLat, newLon], {icon: blackSquirrelMarker}).bindPopup("My fur is black!");
             expandArr.push(marker);
         } else if (squirrel.primary_fur_color === "Cinnamon") {
-            var marker = L.marker([newLat, newLon], {icon: redSquirrelMarker}).bindPopup(`<h3>${date}</h3>`);
+            var marker = L.marker([newLat, newLon], {icon: redSquirrelMarker}).bindPopup("My fur is red, but some may call it 'cinnamon'");
             expandArr.push(marker);
         } else {
-            var marker = L.marker([newLat, newLon], {icon: unknownSquirrelMarker}).bindPopup(`<h3>${date}</h3>`);
+            var marker = L.marker([newLat, newLon], {icon: unknownSquirrelMarker}).bindPopup("They didn't record what color MY fur is");
             expandArr.push(marker);
         }
 
@@ -127,6 +127,9 @@ d3.json(url).then(data => {
     };
 
     legend.addTo(myMap);
+
+    //adds default selected option
+    expandSquirrels.addTo(myMap);
 
     //here we can use the google maps API and take the marker's lat and lon to find what kinds of places these squirrels are visiting. 
 
