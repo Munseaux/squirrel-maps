@@ -149,13 +149,9 @@ d3.json(url).then(data => {
     
     let currentColor = "";
     let days =[];
-    for (let i=0; i<squirrelSightings.length; i++){
 
-        //make list of all unique days
-        if (!days.includes(squirrelSightings[i].Date.getDay())){
-            console.log(days.includes(squirrelSightings[i].Date.getDay()));
-            days.push(squirrelSightings[i].Date.getDay());
-        }
+    for (let i=0; i<squirrelSightings.length; i++){
+        days.push(squirrelSightings[i].Date)
         
         if(squirrelSightings[i].Date.getDay() === currentDay){
             
@@ -183,6 +179,14 @@ d3.json(url).then(data => {
         currentColor = squirrelSightings[i].Color;
         currentDay = squirrelSightings[i].Date.getDay();
     }
+
+    //make list of all unique days
+    function unique ( array ) {
+        return array.filter(function(a){
+            return !this[a] ? this[a] = true : false;
+        }, {});
+    }
+    days = unique(days);
 
     console.log(redArr);
     console.log(blackArr);
