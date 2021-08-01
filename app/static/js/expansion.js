@@ -40,6 +40,43 @@ d3.json(url).then(data => {
 
     var expandArr = [];
 
+    // Creating differently colored markers for each fur color
+    var graySquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    
+    var blackSquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    
+    var redSquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    
+    var unknownSquirrelMarker = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
     data.forEach(squirrel => {
         var lon = Number(squirrel.x);
         var lat = Number(squirrel.y);
@@ -54,8 +91,20 @@ d3.json(url).then(data => {
         newLat = lat + ((lat-centerLat) * 1.5);
         newLon = lon + ((lon-centerLon) * 1.5); 
 
-        var marker = L.marker([newLat, newLon]).bindPopup(`<h3>${date}</h3>`);
-        expandArr.push(marker);
+        if (squirrel.primary_fur_color === "Gray") {
+            var marker = L.marker([newLat, newLon], {icon: graySquirrelMarker}).bindPopup(`<h3>${date}</h3>`);
+            expandArr.push(marker);
+        } else if (squirrel.primary_fur_color === "Black") {
+            var marker = L.marker([newLat, newLon], {icon: blackSquirrelMarker}).bindPopup(`<h3>${date}</h3>`);
+            expandArr.push(marker);
+        } else if (squirrel.primary_fur_color === "Cinnamon") {
+            var marker = L.marker([newLat, newLon], {icon: redSquirrelMarker}).bindPopup(`<h3>${date}</h3>`);
+            expandArr.push(marker);
+        } else {
+            var marker = L.marker([newLat, newLon], {icon: unknownSquirrelMarker}).bindPopup(`<h3>${date}</h3>`);
+            expandArr.push(marker);
+        }
+
     });
 
     var expandSquirrels = L.layerGroup(expandArr);
