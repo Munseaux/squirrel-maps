@@ -72,6 +72,10 @@ d3.json(url).then(data => {
         shadowSize: [41, 41]
     });
 
+    var graySquirrels = [];
+    var blackSquirrels = [];
+    var cinnamonSquirrels = [];
+
     data.forEach(squirrel => {
         var lon = squirrel.x;
         var lat = squirrel.y;
@@ -85,28 +89,31 @@ d3.json(url).then(data => {
         var marker = L.marker([lat,lon]).bindPopup(date);
 
         //set marker colors for squirrels. 
-        if (day > 15) {
-            if (squirrel.primary_fur_color === "Gray") {
-                var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
-                electionArr.push(marker);
-                electionSquirrelData.push(squirrel);
-            }
-            else if (squirrel.primary_fur_color === "Black") {
-                var marker = L.marker([lat, lon], {icon: blackSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
-                electionArr.push(marker);
-                electionSquirrelData.push(squirrel);
-            }
-            else if (squirrel.primary_fur_color === "Cinnamon") {
-                var marker = L.marker([lat, lon], {icon: redSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
-                electionArr.push(marker);
-                electionSquirrelData.push(squirrel);
-            }
-            else {
-                var marker = L.marker([lat, lon], {icon: unknownSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
-                electionArr.push(marker);
-                electionSquirrelData.push(squirrel);
-            }
+       
+        if (squirrel.primary_fur_color === "Gray") {
+            var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+            electionArr.push(marker);
+            electionSquirrelData.push(squirrel);
+            greySquirrels.push(squirrel);
         }
+        else if (squirrel.primary_fur_color === "Black") {
+            var marker = L.marker([lat, lon], {icon: blackSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+            electionArr.push(marker);
+            electionSquirrelData.push(squirrel);
+            blackSquirrels.push(squirrel);
+        }
+        else if (squirrel.primary_fur_color === "Cinnamon") {
+            var marker = L.marker([lat, lon], {icon: redSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+            electionArr.push(marker);
+            electionSquirrelData.push(squirrel);
+            cinnamonSquirrels.push(squirrel);
+        }
+        else {
+            var marker = L.marker([lat, lon], {icon: unknownSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
+            electionArr.push(marker);
+            electionSquirrelData.push(squirrel);
+        }
+        
     });
    
     var novSquirrels = L.layerGroup(electionArr);
@@ -123,7 +130,7 @@ d3.json(url).then(data => {
 
         var div = L.DomUtil.create("div", "info legend");
         //this sets up a bootstrap dropdown in a legend object of leaflet. This will be used to insert charts into the dropdown so they can be expanded and contracted. insert charts as li tags inside the dropdown-menu ul class. 
-        div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"><li><div id = \"barchart1\"></div></li></ul></div>";
+        div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"><li><div id = \"barchart1\"></div></li><li><div id = \"barchart2\"></div></li><li><div id = \"barchart3\"></div></li></ul></div>";
 
         return div;
     };
@@ -133,6 +140,37 @@ d3.json(url).then(data => {
     let numberOfGraphs = 1;
 
     //  #####  PLOTLY BELOW  ######
+
+    var squirrelDemographicsData = [
+        {
+          x: ["Grey", "Black", "Cinnamon"],
+          y: [greySquirrels.length, blackSquirrels.length, cinnamonSquirrels.length],
+          text: "Squirrel Number",
+          type:"bar",
+          marker: {
+            color: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', '#D2691E'],
+            opacity: 0.8,
+            line: {
+              color: ['rgb(96, 96, 96)', 'rgb(0, 0, 0)', 'rgb(102, 51, 0)'],
+              width: 3
+            }
+          }
+        }
+      ];
+    
+      var squirrelDemographicsLayout = {
+        title: "Squirrel Demographics",
+        yaxis: {
+          title: {
+            text: "Squirrel Number"
+          }
+        },
+        xaxis: {
+          title: {
+            text: "Fur Color"
+          }
+        }
+      };
 
     //sort to get into date order. 
     squirrelSightings.sort(function(a,b){
@@ -228,6 +266,9 @@ d3.json(url).then(data => {
     };    
 
 	Plotly.newPlot("barchart1", [trace1, trace2, trace3], squirrelElectionsLayout);
+    Plotly.newPlot("barchart2", squirrelDemographicsData, squirrelDemographicsLayout);
+
+    //throw img tag into barchart3 ID
     
 
 
