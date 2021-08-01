@@ -22,7 +22,7 @@ This section of the website draws parallels between squirrel demographics and NY
 
 ## Central Park Expander
 
-This tab expands the extant squirrel sightings in central park, and extrapolates them across the island of manhattan. Further study is needed to quantify squirrel shopping trends, museum visit rates, and other movement data. 
+This tab expands the extant squirrel sightings in Central Park, and extrapolates them across the island of Manhattan. Further study is needed to quantify squirrel shopping trends, museum visit rates, and other movement data. 
 
 ![img](app/static/images/extrapolated.png)
 
