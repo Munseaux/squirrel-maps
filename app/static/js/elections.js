@@ -196,7 +196,7 @@ d3.json(url).then(data => {
         name: "Gray Squirrels",
         mode: "lines",
         line: {
-            color: 'rgb(160, 160, 160)'
+            color: 'blue'
         }
     };
 
@@ -207,7 +207,7 @@ d3.json(url).then(data => {
         name: "Black Squirrels",
         mode: 'lines',
         line: {
-            color: 'rgb(32, 32, 32)'
+            color: 'green'
         }   
     };
 
@@ -218,7 +218,7 @@ d3.json(url).then(data => {
         name: "Cinnamon Squirrels",
         mode: 'lines',
         line: {
-            color: 'rgb(102, 51, 0)'
+            color: 'red'
         }
     };
 
