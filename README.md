@@ -5,7 +5,7 @@ This project takes squirrel sighting data from central park and displays insight
 [You can find it hosted here!](http://squirrel-map.herokuapp.com/)
 
 
-In 2018 a group of citizen scientists took a census of squirrels in New York City's Central Park.
+In 2018, a group of citizen scientists took a census of squirrels in New York City's Central Park.
 [You can view their findings here.](https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw)
 
 
@@ -14,7 +14,7 @@ In 2018 a group of citizen scientists took a census of squirrels in New York Cit
 
 ## Elections
 
-This section of the website draws parrallels between squirrel demographics and NYC political party affiliation. 
+This section of the website draws parallels between squirrel demographics and NYC political party affiliation. 
 
 ![img](app/static/images/elections.png)
 
@@ -22,7 +22,7 @@ This section of the website draws parrallels between squirrel demographics and N
 
 ## Central Park Expander
 
-This tab expands the extant squirrel sightings in central park, and extrapolates them across the island of manhatten. Further study is needed to quantify squirrel shopping trends, museum visit rates, and other movement data. 
+This tab expands the extant squirrel sightings in central park, and extrapolates them across the island of manhattan. Further study is needed to quantify squirrel shopping trends, museum visit rates, and other movement data. 
 
 ![img](app/static/images/extrapolated.png)
 
