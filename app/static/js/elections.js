@@ -153,8 +153,10 @@ d3.json(url).then(data => {
         console.log(squirrelSightings[i].Date.getDay());
         console.log(currentDay);
         if(squirrelSightings[i].Date.getDay() === currentDay){
-
-            days.push(squirrelSightings[i].Date);
+            if (!days.includes(squirrelSightings[i].Date)){
+                days.push(squirrelSightings[i].Date);
+            }
+            
             //make list of all days
 
             
@@ -186,6 +188,7 @@ d3.json(url).then(data => {
     console.log(redArr);
     console.log(blackArr);
     console.log(grayArr);
+    
 
     // set range for time series data. 
 
