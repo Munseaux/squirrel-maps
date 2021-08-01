@@ -39,10 +39,48 @@ d3.json(url).then(data => {
   var greyArr = [];
   var cinnamonArr = [];
   var blackArr = [];
+
+  // Creating arrays for days of the week
+  var sunSquirrel = 0;
+  var monSquirrel = 0;
+  var tueSquirrel = 0;
+  var wedSquirrel = 0;
+  var thuSquirrel = 0;
+  var friSquirrel = 0;
+  var satSquirrel = 0;
+
   data.forEach(squirrel => {
     var lon = squirrel.x;
     var lat = squirrel.y;
     var color = squirrel.primary_fur_color;
+    var {year, month, day} = squirrel.date.match(/(?<month>\d{2})(?<day>\d{2})(?<year>\d{4})/, 'ig').groups;
+    var date = new Date(`${year}.${month}.${day}`);
+
+    if (date.getDay() === 0) {
+      sunSquirrel++;
+    }
+    else if(date.getDay() === 1) {
+      monSquirrel++;
+    }
+    else if(date.getDay() === 2) {
+      tueSquirrel++;
+    }
+    else if(date.getDay() === 3) {
+      wedSquirrel++;
+    }
+    else if(date.getDay() === 4) {
+      thuSquirrel++;
+    }
+    else if(date.getDay() === 5) {
+      friSquirrel++;
+    }
+    else if(date.getDay() === 6) {
+      satSquirrel++;
+    }
+    console.log(date);
+
+    
+    
 
     // Creating differently colored markers for each fur color
     var graySquirrelMarker = new L.Icon({
@@ -145,7 +183,7 @@ d3.json(url).then(data => {
   legend.onAdd = function() {
       var div = L.DomUtil.create("div", "info legend");
       //this sets up a bootstrap dropdown in a legend object of leaflet. This will be used to insert charts into the dropdown so they can be expanded and contracted. insert charts as li tags inside the dropdown menu ul class. 
-      div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"><li><div id = \"barchart1\"></div></li><li><div id = \"piechart\"></div></li><li><div id = \"barchart2\"></div></li></ul></div>"; 
+      div.innerHTML = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Charts</button>\"  <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton1\"><li><div id = \"barchart1\"></div></li><li><div id = \"piechart\"></div></li><li><div id = \"barchart2\"></div></li><li><div id = \"barchart3\"></div></li></ul></div>"; 
       return div;
   };
 
@@ -248,9 +286,48 @@ d3.json(url).then(data => {
     }
   };
 
+
+  // Creating Data layout for Squirrel sightings by day of the week
+
+  var squirrelDayOfWeekData = [
+    {
+      x: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      y: [sunSquirrel, monSquirrel, tueSquirrel, wedSquirrel, thuSquirrel, friSquirrel, satSquirrel],
+      text: "Squirrel Number",
+      type:"bar",
+      marker: {
+        color: 'rgb(160, 160, 160)',
+        opacity: 0.8,
+        line: {
+          color: 'rgb(96, 96, 96)',
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var squirrelDayOfWeekLayout = {
+    title: "Squirrel Sightings by Day of the Week",
+    yaxis: {
+      title: {
+        text: "Squirrel Number"
+      }
+    },
+    xaxis: {
+      title: {
+        text: "Day of the Week"
+      }
+    }
+  };
+
+  Math
+
+  // Generating all of the plots
+
   Plotly.newPlot("barchart1", squirrelDemographicsData, squirrelDemographicsLayout);
   Plotly.newPlot("piechart", squirrelPieData, squirrelPieLayout);
   Plotly.newPlot("barchart2", AMPMsquirrelData, AMPMsquirrelLayout);
+  Plotly.newPlot("barchart3", squirrelDayOfWeekData, squirrelDayOfWeekLayout);
 
   // Adds all squirrel markers as the default marker layer on map
   squirrels.addTo(myMap);
@@ -266,9 +343,3 @@ d3.json(url).then(data => {
 // squirrel sightings over time compared to local election results. 
 //overlay increasing manhatten size to determine where squirrels would be if central park
 // was the same size as the entire island. 
-
-
-
-  
-
-  
