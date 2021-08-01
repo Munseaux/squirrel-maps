@@ -30,7 +30,8 @@ d3.json(url).then(data => {
     center: [40.7831, -73.9712],
     zoom: 14,
     layers: streetmap,
-    scrollWheelZoom: false
+    scrollWheelZoom: false,
+    doubleClickZoom: false
   });
 
 
