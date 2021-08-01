@@ -90,8 +90,8 @@ d3.json(url).then(data => {
     
         // take the difference between the lat and the lat of the center of central park. multiply by 1.5(arbitrary to make scale work) and then add to the lat. 
         // this gives the same pattern, but larger. 
-        newLat = lat + ((lat-centerLat) * 1.5);
-        newLon = lon + ((lon-centerLon) * 1.5); 
+        newLat = lat + ((lat-centerLat) * 1.25);
+        newLon = lon + ((lon-centerLon) * 1.25); 
 
         if (squirrel.primary_fur_color === "Gray") {
             var marker = L.marker([newLat, newLon], {icon: graySquirrelMarker}).bindPopup("I'm a Gray Squirrel!");
