@@ -133,7 +133,139 @@ d3.json(url).then(data => {
     expandSquirrels.addTo(myMap);
 
 
-    //this is where the plotly logic should go. make bar graph of where the extrapolated squirrels are (resturant, park, museum, drowning, etc.
+    // Squirrel Demographic plot --------------------------------------------------------------------------------------------------
+
+    var squirrelDemographicsData = [
+    {
+      x: ["Grey", "Black", "Cinnamon"],
+      y: [greyArr.length, blackArr.length, cinnamonArr.length],
+      text: "Squirrel Number",
+      type:"bar",
+      marker: {
+        color: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', '#D2691E'],
+        opacity: 0.8,
+        line: {
+          color: ['rgb(96, 96, 96)', 'rgb(0, 0, 0)', 'rgb(102, 51, 0)'],
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var squirrelDemographicsLayout = {
+    title: "Squirrel Demographics",
+    yaxis: {
+      title: {
+        text: "Squirrel Number"
+      }
+    },
+    xaxis: {
+      title: {
+        text: "Fur Color"
+      }
+    }
+  };
+
+  // Squirrel Demographic Pie Chart --------------------------------------------------------------------------------------------------
+
+  var squirrelPieData = [
+    {
+      labels: ["Grey", "Black", "Cinnamon"],
+      values: [greyArr.length, blackArr.length, cinnamonArr.length],
+      text: "Squirrel Number",
+      type:"pie",
+      opacity: 0.8,
+      marker: {
+        colors: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', '#D2691E'],
+        line: {
+          color: ['rgb(96, 96, 96)', 'rgb(0, 0, 0)', 'rgb(102, 51, 0)'],
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var squirrelPieLayout = {
+    title: "Squirrel Percentage by Fur Color",
+    height: 500,
+    width: 700
+  };
+
+
+  // AM vs PM squirrel Sightings --------------------------------------------------------------------------------------------------
+  var AMPMsquirrelData = [
+    {
+      x: ["AM", "PM"],
+      y: [amArr.length, pmArr.length],
+      text: "Squirrel Number",
+      type:"bar",
+      marker: {
+        color: ['rgb(255, 255, 102)', 'rgb(102, 0, 204)'],
+        opacity: 0.8,
+        line: {
+          color: ['rgb(255, 178, 102)', 'rgb(51, 0, 102)'],
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var AMPMsquirrelLayout = {
+    title: "Squirrel by AM/PM",
+    yaxis: {
+      title: {
+        text: "Squirrel Number"
+      }
+    },
+    xaxis: {
+      title: {
+        text: "Ante- or Post-Meridiem"
+      }
+    }
+  };
+
+
+  // Creating Data layout for Squirrel sightings by day of the week
+
+  var squirrelDayOfWeekData = [
+    {
+      x: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      y: [sunSquirrel, monSquirrel, tueSquirrel, wedSquirrel, thuSquirrel, friSquirrel, satSquirrel],
+      text: "Squirrel Number",
+      type:"bar",
+      marker: {
+        color: 'rgb(160, 160, 160)',
+        opacity: 0.8,
+        line: {
+          color: 'rgb(96, 96, 96)',
+          width: 3
+        }
+      }
+    }
+  ];
+
+  var squirrelDayOfWeekLayout = {
+    title: "Squirrel Sightings by Day of the Week",
+    yaxis: {
+      title: {
+        text: "Squirrel Number"
+      }
+    },
+    xaxis: {
+      title: {
+        text: "Day of the Week"
+      }
+    }
+  };
+
+  Math
+
+  // Generating all of the plots
+
+  Plotly.newPlot("barchart1", squirrelDemographicsData, squirrelDemographicsLayout);
+  Plotly.newPlot("piechart", squirrelPieData, squirrelPieLayout);
+  Plotly.newPlot("barchart2", AMPMsquirrelData, AMPMsquirrelLayout);
+  Plotly.newPlot("barchart3", squirrelDayOfWeekData, squirrelDayOfWeekLayout);
 
 
 });
