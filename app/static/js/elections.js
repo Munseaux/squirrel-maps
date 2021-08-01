@@ -94,7 +94,7 @@ d3.json(url).then(data => {
             var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
             electionArr.push(marker);
             electionSquirrelData.push(squirrel);
-            greySquirrels.push(squirrel);
+            graySquirrels.push(squirrel);
         }
         else if (squirrel.primary_fur_color === "Black") {
             var marker = L.marker([lat, lon], {icon: blackSquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
@@ -144,7 +144,7 @@ d3.json(url).then(data => {
     var squirrelDemographicsData = [
         {
           x: ["Grey", "Black", "Cinnamon"],
-          y: [greySquirrels.length, blackSquirrels.length, cinnamonSquirrels.length],
+          y: [graySquirrels.length, blackSquirrels.length, cinnamonSquirrels.length],
           text: "Squirrel Number",
           type:"bar",
           marker: {
