@@ -141,15 +141,15 @@ d3.json(url).then(data => {
 
     //  #####  PLOTLY BELOW  ######
 
-    var squirrelDemographicsData = [
+    var squirrelPieData = [
         {
-          x: ["Grey", "Black", "Cinnamon"],
-          y: [graySquirrels.length, blackSquirrels.length, cinnamonSquirrels.length],
+          labels: ["Grey", "Black", "Cinnamon"],
+          values: [graySquirrels.length, blackSquirrels.length, cinnamonSquirrels.length],
           text: "Squirrel Number",
-          type:"bar",
+          type:"pie",
+          opacity: 0.8,
           marker: {
-            color: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', '#D2691E'],
-            opacity: 0.8,
+            colors: ['rgb(160, 160, 160)', 'rgb(32, 32, 32)', '#D2691E'],
             line: {
               color: ['rgb(96, 96, 96)', 'rgb(0, 0, 0)', 'rgb(102, 51, 0)'],
               width: 3
@@ -157,6 +157,12 @@ d3.json(url).then(data => {
           }
         }
       ];
+    
+      var squirrelPieLayout = {
+        title: "Squirrel Percentage by Fur Color",
+        height: 500,
+        width: 700
+      };
     
       var squirrelDemographicsLayout = {
         title: "Squirrel Demographics",
@@ -266,7 +272,7 @@ d3.json(url).then(data => {
     };    
 
 	Plotly.newPlot("barchart1", [trace1, trace2, trace3], squirrelElectionsLayout);
-    Plotly.newPlot("barchart2", squirrelDemographicsData, squirrelDemographicsLayout);
+    Plotly.newPlot("barchart2", squirrelPieData, squirrelPieLayout);
 
     //throw img tag into barchart3 ID
     
