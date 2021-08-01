@@ -28,7 +28,8 @@ d3.json(url).then(data => {
     var myMap = L.map("map", {
         center: [40.7831, -73.9712],
         zoom: 14,
-        layers: streetmap
+        layers: streetmap,
+        scrollWheelZoom: false
     });
 
     var electionArr = [];
@@ -36,6 +37,7 @@ d3.json(url).then(data => {
     var electionSquirrelData = [];
     var squirrelSightings = [];
 
+    //set marker colors for the diffrerent squirrel fur colors.
     var graySquirrelMarker = new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -80,6 +82,8 @@ d3.json(url).then(data => {
         var {year, month, day} = squirrel.date.match(/(?<month>\d{2})(?<day>\d{2})(?<year>\d{4})/, 'ig').groups;
         var date = new Date(`${year}.${month}.${day}`);
         var marker = L.marker([lat,lon]).bindPopup(date);
+
+        //set marker colors for squirrels. 
         if (day > 15) {
             if (squirrel.primary_fur_color === "Gray") {
                 var marker = L.marker([lat, lon], {icon: graySquirrelMarker}).bindPopup(`<h4>${date}</h4>`);
@@ -127,13 +131,9 @@ d3.json(url).then(data => {
 
     let numberOfGraphs = 1;
 
-    //this is wehre we do the plotly stuff. make sure to use electionSquirrelData array. 
-    //cinnamon squirrels = republicans? grey = dems? black = independent? Does this make it a predictive model for the results. 
-    //squirrel sightings in november vs baseline. 
-    //squirrel location in november vs baseline.
+    //  #####  PLOTLY BELOW  ######
 
-    
-
+    //sort to get into date order. 
     squirrelSightings.sort(function(a,b){
         return new Date(a.Date) - new Date(b.Date);
     });
@@ -146,12 +146,12 @@ d3.json(url).then(data => {
     let redCount = 0;
     let grayCount =0;
     let currentDay = squirrelSightings[0].Date.getDay();
+    console.log(currentDay);
     let currentColor = "";
     for (let i=0; i<squirrelSightings.length; i++){
-        
+        console.log(squirrelSightings[i].Date.getDay());
+        console.log(currentDay);
         if(squirrelSightings[i].Date.getDay() === currentDay){
-            console.log(squirrelSightings[i].Date.getDay());
-            console.log(currentDay);
             
             if(squirrelSightings[i].Color === "Black"){
                 blackCount++;

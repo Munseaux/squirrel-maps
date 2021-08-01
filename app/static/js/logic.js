@@ -29,7 +29,8 @@ d3.json(url).then(data => {
   var myMap = L.map("map", {
     center: [40.7831, -73.9712],
     zoom: 14,
-    layers: streetmap
+    layers: streetmap,
+    scrollWheelZoom: false
   });
 
 
