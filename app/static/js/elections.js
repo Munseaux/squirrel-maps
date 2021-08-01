@@ -132,13 +132,12 @@ d3.json(url).then(data => {
     //squirrel sightings in november vs baseline. 
     //squirrel location in november vs baseline.
 
-    console.log(squirrelSightings);
+    
 
     squirrelSightings.sort(function(a,b){
         return new Date(a.Date) - new Date(b.Date);
     });
-    console.log(squirrelSightings);
-
+    
     let blackArr=[];
     let redArr=[];
     let grayArr=[];
@@ -185,7 +184,7 @@ d3.json(url).then(data => {
 
     var trace1 = {
             x: ['2018-10-01', '2018-10-30'],
-            y: blackArr,
+            y: grayArr,
             type: "scatter"
     };
 
