@@ -174,8 +174,6 @@ d3.json(url).then(data => {
     collapsed: false
   }).addTo(myMap);
 
-  legend.addTo(myMap);
-
   // Adds all squirrel markers as the default marker layer on map
   squirrels.addTo(myMap);
 
